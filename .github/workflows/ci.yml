@@ -22,7 +22,7 @@ jobs:                 #aca van todos los jobs
         uses: actions/checkout@v4 #clona el repo en el runner
 
       - name: Setup Node.js 
-        uses: actions/checkout@v4  # instala Node en el runner
+        uses: actions/setup-node@v4  # instala Node en el runner
         whit: 
           node-version: '20'        #version especifica de Node
 
