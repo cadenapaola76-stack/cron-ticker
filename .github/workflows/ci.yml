@@ -12,7 +12,7 @@ on:                   # eventos que dispara el workflow
 
 #variables a nivel del workflow
 env:
-  NODE_VERSION:"20"
+  NODE_VERSION: "20"
   APP_NAME: cron-ticker
 
 jobs:
