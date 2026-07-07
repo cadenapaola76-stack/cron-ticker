@@ -33,6 +33,6 @@ jobs:
 
       # Variables a nivel de steps
       - name: Build
-      - run: npm run build
+        run: npm run build
         env:
           APP_VERSION: '2.0.0'
