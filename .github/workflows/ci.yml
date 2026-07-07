@@ -8,28 +8,23 @@ on:
 
   workflow_dispatch:
 
-env:
-  NODE_VERSION: '20'
-
 jobs:
 
-  test:
-    name: Tests
+  test: 
+    name: Test en node matrix
     runs-on: ubuntu-latest 
+
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+      fail-fast: false
+
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Node Js ${{matrix.node-version}}
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION}}
+          node-version: ${{matrix.node-version}}
           cache: 'npm'
-      - run: npm ci
-      - name: Run tests with coverage
-        run: npm run test:coverage
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-{{github.sha}}
-          path: coverage/
-          retention-day: 7
+      - run: npm ci 
+      - run: npm test
